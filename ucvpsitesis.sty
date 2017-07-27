@@ -1,0 +1,222 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{ucvpsitesis}[2016/06/30 Formato de tesis de pregrado en Psicología]
+% 2017/07/19 Agregadas opciones para manejar apendices y una pagina de indicación de apendices
+% Preferencia por utilizar la clase de documento Memoir
+
+\usepackage[
+	twoside,
+	paper=letterpaper,
+%	outer=4cm,
+%	inner=5cm,
+%	vmargin=2.54cm
+	]{geometry} %Definición del formato del papel y márgenes
+\usepackage{fontspec} %utilidad de fuentes y Unicode para \xetex\
+\defaultfontfeatures{Ligatures=Common,Numbers=OldStyle} %Opción para activar ligaturas \Tex\
+\setmainfont{Palatino Linotype} %Seleccionar fuentes
+\usepackage{graphicx} %Utilidad para imágenes
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish} %Selección del idioma
+\usepackage{csquotes} %Soporte de símbolos para referencias bibliográficas
+\usepackage{titling} %Permite utilizar thetitle y theauthor
+\usepackage[tiny]{titlesec} %Permite personalizar los titulares de cada sección
+%Definiones de los formatos de los titulares en formate APAUCV
+\titleformat{\chapter}[hang]{\centering \bfseries \large}{\Roman{chapter}.}{2em}{}[]
+\titleformat{\subsection}[hang]{\bfseries}{\hspace*{1.2em} \thesubsection.}{2em}{}[]
+\titleformat{\subsubsection}[hang]{\bfseries\itshape}{\hspace*{5em} \thesubsubsection.}{2em}{}{}
+\titlelabel{\thetitle.\quad}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+%%%%%%%%% Estoy sustituyendo esto con las opciones del paquete memoir
+%\usepackage{tocloft} %Permite personalizar la tabla de contenidos
+%\renewcommand{\cftchapaftersnum}{.}
+%\renewcommand{\cftsecaftersnum}{.}
+%\renewcommand{\cftsubsecaftersnum}{.}
+%\renewcommand{\cftsecfont}{\bfseries}
+%\renewcommand{\cfttoctitlefont}{\addcontentsline{toc}{chapter}{Índice general}\normalfont\large\bfseries\hfill} %Incluir Índice en el Índice
+%\renewcommand{\cftaftertoctitle}{\hfill}
+%%%%%%%%%
+\usepackage[
+	style=apa,
+	sortcites=true,
+	sorting=nyt,
+	date=year
+	]{biblatex} %Utilidad de para manejar referencias en formato APA automáticamente 
+\DeclareLanguageMapping{spanish}{spanish-apa} %Mapeo del idioma
+
+\usepackage{fancyhdr} %Paquete para personalizar encabezados
+\def\shorttitle#1{\def\@shorttitle{#1}} %Define el uso de un título corto para los encabezados
+\newcommand{\theshorttitle}{\@shorttitle}
+\fancypagestyle{ucvstyle}{
+\fancyhf{} %Limpia el formato de encabezado
+%Configuración de encabezados
+\fancyhead[CE]{\scshape\theshorttitle}
+\fancyhead[CO]{\scshape\leftmark}
+\fancyhead[RO,LE]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+}
+\renewcommand{\chaptermark}[1]{\markboth{\Roman{chapter}.\ #1}{}} %Redefine la marca de capítulo en el encabezado asegurandose que siempre se presenta como un número romano
+%Redefine el estilo plain para las primeras páginas de los capítulos
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyhead[RO,LE]{\thepage}
+	\fancyhead[C]{\scshape\theshorttitle}
+	\renewcommand{\headrulewidth}{0.4pt}
+	}
+%%%%%%%%%%%%
+\usepackage{microtype} %Corrige aspectos estéticos tipográficos
+\usepackage[
+%	linktocpage=true,
+	hidelinks=true
+	]{hyperref} %incluye links a todas las URL y a la tabla de contenidos.
+	
+%Definiciones de comandos para usar en el material previo
+\def\departamento#1{\def\@departamento{#1}}
+\newcommand{\eldepartamento}{\@departamento}
+
+\def\tutor#1{\def\@tutor{#1}}
+\newcommand{\eltutor}{\@tutor}
+
+\def\mail#1{\def\@mail{#1}}
+\newcommand{\elmail}{\@mail}
+%Inicialización para evitar errores si no se incluyen en el encabezado
+\departamento{}
+\tutor{}
+\mail{}
+\shorttitle{}
+%%%%%%%%%%%%%%%%%%%
+%\def\agradecimiento#1{\def\@agradecimiento{#1}}
+%\newcommand{\elagradecimiento}{\@agradecimiento}
+%\agradecimiento{}
+
+%\newcommand{\makeagradecimiento}{ %Comando para hacer página de agradecimientos
+%	\pagestyle{plain}
+%	\vspace*{2.5cm plus 1fill}
+%	\addcontentsline{toc}{chapter}{Agradecimientos}
+%	{\bfseries \raggedright \LARGE Agradecimientos\par}
+%	\vspace{1cm plus 1fill}
+%	\begin{flushright}
+%		\itshape
+%		\elagradecimiento
+%	\end{flushright}
+%	\vfill
+%	\clearpage
+%}
+
+%\def\resumen#1{\def\@resumen{#1}}
+%\newcommand{\elresumen}{\@resumen}
+%\resumen{}
+%
+%\def\palabras#1{\def\@palabras{#1}}
+%\newcommand{\laspalabras}{\@palabras}
+%\palabras{}
+
+%\newcommand{\makeresumen}{ %Comando para hacer página de resumen con palabras clave
+%	\pagestyle{plain}
+%	\vspace*{2.5cm}
+%	\addcontentsline{toc}{chapter}{Resumen}
+%	{\centering \bfseries Resumen\par}
+%		\begin{quotation}
+%		\elresumen
+%		\end{quotation}
+%		
+%		\begin{description}
+%			\item[\itshape Palabras clave:] \laspalabras
+%		\end{description}
+%		\vfill
+%		\clearpage
+%}
+%
+%\def\abstract#1{\def\@abstract{#1}}
+%\newcommand{\elabstract}{\@abstract}
+%\abstract{}
+%
+%\def\keywords#1{\def\@keywords{#1}}
+%\newcommand{\thekeywords}{\@keywords}
+%\keywords{}
+
+\def\engtitle#1{\def\@engtitle{#1}}
+\newcommand{\theengtitle}{\@engtitle}
+\engtitle{}
+%\keywords{}
+
+%\newcommand{\makeabstract}{ %Comando para hacer página de resumen con palabras clave en Inglés, Incluyendo título traducido al inglés
+%	\pagestyle{plain}
+%	\vspace*{0.5cm}
+%		\begin{center}
+%			\bfseries \Large \theengtitle
+%		\end{center}
+%	\vspace{0.5cm}
+%	\addcontentsline{toc}{chapter}{Abstract}
+%	{\centering \bfseries Abstract\par}
+%		\begin{quotation}
+%			\elabstract
+%		\end{quotation}
+%		
+%		\begin{description}
+%			\item[\itshape Keywords:] \thekeywords.
+%		\end{description}
+%		\vfill
+%	\clearpage
+%}
+
+\renewcommand{\maketitle}{ %Redefinición de la portada y contraportada
+	\begin{titlingpage}
+	\pagenumbering{roman}
+		\thispagestyle{empty}
+		\setcounter{page}{1}
+		\centering
+		\vspace{3cm}
+		\includegraphics[height=3cm,keepaspectratio]{logo-ucv}\par \vspace{1cm}
+		{\bfseries
+		Universidad Central de Venezuela\par
+		Facultad de Humanidades y Educación\par
+		Escuela de Psicología\par
+		Departamento de \eldepartamento\par}
+		\vspace{2cm plus 1fill}
+		{\bfseries \scshape \Large
+		\thetitle \par}
+		\vspace{2cm plus 1fill}
+		\begin{tabular}{ccc}
+			{\bfseries\scshape Tutor:} &  & {\bfseries\scshape Autores:} \\
+			            \eltutor             &  &             \theauthor
+		\end{tabular}
+		\vfill
+		\thedate
+		\cleardoublepage
+		\thispagestyle{plain}
+		\centering
+		\vspace{3cm}
+		\includegraphics[height=3cm,keepaspectratio]{logo-ucv}\par \vspace{1cm}
+		{\bfseries
+		Universidad Central de Venezuela\par
+		Facultad de Humanidades y Educación\par
+		Escuela de Psicología\par
+		Departamento de \eldepartamento\par}
+		\vspace{2cm plus 1fill}
+		{\bfseries \scshape \Large
+		\thetitle \par
+		\normalfont \normalsize (Trabajo de investigación presentado ante la Escuela de Psicología de la Universidad Central de Venezuela, como requisito parcial para optar al título de Licenciado(a) en Psicología.)\par
+		}
+		\vspace{2cm plus 1fill}
+		\begin{tabular}{ccc}
+			{\bfseries\scshape Tutor:} &  & {\bfseries\scshape Autores:} \\
+			            \eltutor             &  &      \theauthor \footnotemark
+		\end{tabular}
+		\vfill
+		\thedate
+		\footnotetext{Para correspondencia con relación al presente trabajo de investigación, favor comunicarse a la siguiente dirección: \elmail}
+	\end{titlingpage}
+	\cleardoublepage
+%	\makeagradecimiento
+%	\makeresumen
+%	\makeabstract
+%	\tableofcontents
+%	\cleardoublepage
+	\pagestyle{ucvstyle}
+%	\pagenumbering{arabic}
+\renewcommand{\appendixname}{Apéndice}
+\renewcommand{\appendixpagename}{Apéndices}
+}
+\OnehalfSpacing
+\endinput

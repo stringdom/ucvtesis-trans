@@ -1,0 +1,34 @@
+\documentclass[12pt,letterpaper,twoside,openright]{memoir}
+\usepackage{ucvpsitesis}
+\usepackage[spanish]{todonotes}
+
+\addbibresource{tesis.bib}
+\author{Leonardo Pérez \\ & & Emerson Yancul}
+\tutor{Luisana Gómez}
+\departamento{Psicología Social}
+\mail{leo.prez.k@gmail.com; eyanor@gmail.com}
+\date{2017}
+\title{Identidad de género y transición en las personas trans de Caracas}
+\shorttitle{Identidad de género y transición}
+\engtitle{Gender identity and transition on trans people from Caracas}
+
+\begin{document}
+	\maketitle
+%\nocite{*}
+\frontmatter
+	\include{frontmatter}
+	\include{intro}
+	\todo{Personalizar título del índice general}
+	\tableofcontents
+\mainmatter
+	\include{marco}
+	\include{problema}
+	\include{objetivos} % Fijados, objetivos definitivos
+	\include{metodologia}
+	\appendix
+	\appendixpage
+	\include{guion} % Versión final a utilizar para entrevistas
+\backmatter
+	\printbibliography
+	\listoftodos
+\end{document}
