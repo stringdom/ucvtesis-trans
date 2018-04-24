@@ -211,3 +211,5 @@ TSWLatexianTemp*
 *-tags.tex
 *.xml
 *.iml
+/.project
+/.texlipse
