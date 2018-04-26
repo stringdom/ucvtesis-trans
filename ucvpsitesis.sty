@@ -41,6 +41,19 @@
 \DeclareLanguageMapping{spanish}{spanish-apa}
 %%%
 
+% Sustituir usos de caption de memoir
+\usepackage{caption}
+% Configuración de captions
+\captionsetup[table]{
+	format=plain,
+	indention=2em,
+	labelformat=simple,
+	labelsep=newline,
+	justification=raggedright,
+	singlelinecheck=false,
+	font=it
+}
+
 %%%
 % Títulos
 % Permite utilizar \thetitle y \theauthor como variables
