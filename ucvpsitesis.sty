@@ -77,48 +77,62 @@
 % Encabezados
 % Paquete para personalizar encabezados
 \usepackage{fancyhdr}
+% Crea un estilo de página
+\fancypagestyle{ucvstyle}{
+\fancyhf{} %Limpia el formato de encabezado
+%Configuración de encabezados
+\fancyhead[CE]{\scshape\theshorttitle} % CE Centered even
+\fancyhead[CO]{\scshape\leftmark} % Centered odd
+\fancyhead[RO,LE]{\thepage} % Rigth odd, left even
+\renewcommand{\headrulewidth}{0.4pt}
+}
+
+%Redefine la marca de capítulo en el encabezado asegurandose que siempre se
+%presenta como un número romano
+\renewcommand{\chaptermark}[1]{\markboth{\Roman{chapter}.\ #1}{}}
+%Redefine el estilo 'plain' para las primeras páginas de los capítulos
+\fancypagestyle{plain}{
+\fancyhf{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[C]{\scshape\theshorttitle}
+\renewcommand{\headrulewidth}{0.4pt}
+}
+%%%
+
+% Corrige aspectos estéticos tipográficos
+\usepackage{microtype}
+% Incluye links a todas las URL y a la tabla de contenidos.
+\usepackage[
+%	linktocpage=true,
+hidelinks=true
+]{hyperref}
+
+% Definiciones de comandos para usar en el material previo
 % Define el uso de un título corto para los encabezados
 \def\shorttitle#1{\def\@shorttitle{#1}}
 % The new command \theshorttitle returns the variable \@shorttitle
 \newcommand{\theshorttitle}{\@shorttitle}
-\fancypagestyle{ucvstyle}{
-\fancyhf{} %Limpia el formato de encabezado
-%Configuración de encabezados
-\fancyhead[CE]{\scshape\theshorttitle}
-\fancyhead[CO]{\scshape\leftmark}
-\fancyhead[RO,LE]{\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-}
-\renewcommand{\chaptermark}[1]{\markboth{\Roman{chapter}.\ #1}{}} %Redefine la marca de capítulo en el encabezado asegurandose que siempre se presenta como un número romano
-%Redefine el estilo plain para las primeras páginas de los capítulos
-\fancypagestyle{plain}{
-	\fancyhf{}
-	\fancyhead[RO,LE]{\thepage}
-	\fancyhead[C]{\scshape\theshorttitle}
-	\renewcommand{\headrulewidth}{0.4pt}
-	}
-%%%%%%%%%%%%
-\usepackage{microtype} %Corrige aspectos estéticos tipográficos
-\usepackage[
-%	linktocpage=true,
-	hidelinks=true
-	]{hyperref} %incluye links a todas las URL y a la tabla de contenidos.
-	
-%Definiciones de comandos para usar en el material previo
+
+% Departamento de social
 \def\departamento#1{\def\@departamento{#1}}
 \newcommand{\eldepartamento}{\@departamento}
 
+% Nombre del tutor
 \def\tutor#1{\def\@tutor{#1}}
 \newcommand{\eltutor}{\@tutor}
 
+% Correo electrónico de los autores
 \def\mail#1{\def\@mail{#1}}
 \newcommand{\elmail}{\@mail}
+
 %Inicialización para evitar errores si no se incluyen en el encabezado
+\shorttitle{}
 \departamento{}
 \tutor{}
 \mail{}
-\shorttitle{}
-%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% Esto ahora se hace en un archivo frontmatter con mayor
+%flexibilidad
 %\def\agradecimiento#1{\def\@agradecimiento{#1}}
 %\newcommand{\elagradecimiento}{\@agradecimiento}
 %\agradecimiento{}
@@ -169,6 +183,7 @@
 %\newcommand{\thekeywords}{\@keywords}
 %\keywords{}
 
+% Para utilizar en frontmatter.tex
 \def\engtitle#1{\def\@engtitle{#1}}
 \newcommand{\theengtitle}{\@engtitle}
 \engtitle{}
@@ -194,14 +209,16 @@
 %	\clearpage
 %}
 
-\renewcommand{\maketitle}{ %Redefinición de la portada y contraportada
+% Redefinición de la portada y contraportada
+\renewcommand{\maketitle}{
 	\begin{titlingpage}
 	\pagenumbering{roman}
 		\thispagestyle{empty}
 		\setcounter{page}{1}
 		\centering
 		\vspace{3cm}
-		\includegraphics[height=3cm,keepaspectratio]{logo-ucv}\par \vspace{1cm}
+		\includegraphics[height=3cm,keepaspectratio]{logo-ucv}\par
+    \vspace{1cm}
 		{\bfseries
 		Universidad Central de Venezuela\par
 		Facultad de Humanidades y Educación\par
@@ -213,11 +230,11 @@
 		\vspace{2cm plus 1fill}
 		\begin{tabular}{ccc}
 			{\bfseries\scshape Tutor:} &  & {\bfseries\scshape Autores:} \\
-			            \eltutor             &  &             \theauthor
+                  \eltutor             &  &             \theauthor
 		\end{tabular}
 		\vfill
 		\thedate
-		\cleardoublepage
+    \cleardoublepage
 		\thispagestyle{plain}
 		\centering
 		\vspace{3cm}
@@ -241,7 +258,7 @@
 		\thedate
 		\footnotetext{Para correspondencia con relación al presente trabajo de investigación, favor comunicarse a la siguiente dirección: \elmail}
 	\end{titlingpage}
-	\cleardoublepage
+    \cleardoublepage
 %	\makeagradecimiento
 %	\makeresumen
 %	\makeabstract
@@ -249,8 +266,11 @@
 %	\cleardoublepage
 	\pagestyle{ucvstyle}
 %	\pagenumbering{arabic}
+
+% Usar nombres correctos en español de el apéndice
 \renewcommand{\appendixname}{Apéndice}
 \renewcommand{\appendixpagename}{Apéndices}
 }
+
 \OnehalfSpacing
 \endinput
