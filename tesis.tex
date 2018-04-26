@@ -1,6 +1,7 @@
 \documentclass[12pt,letterpaper,twoside,openright]{memoir}
 \usepackage{ucvpsitesis}
 \usepackage[spanish]{todonotes}
+\usepackage{booktabs, tabularx}
 
 \addbibresource{tesis.bib}
 \author{Leonardo Pérez \\ & & Emerson Yancul}
@@ -20,6 +21,8 @@
 \frontmatter
   \include{frontmatter}
   \todo{Personalizar título del índice general}
+  % Cambiar nombre de lista de contenidos
+  \contentsname{Índice}
   \tableofcontents
   \mainmatter
   \include{intro}
