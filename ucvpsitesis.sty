@@ -93,15 +93,15 @@
 % Inicializar características de fancyhdr
 \pagestyle{fancy}
 % Redefine la marca de capítulo en el encabezado como un número romano
-%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \roman{\thechapter}.\
-%#1}{\sectionname\ \thesection}}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ {\roman{chapter}}.\
+#1}{}}
 % Crea un estilo de página
 \fancypagestyle{ucvstyle}{
 %Limpia el formato de encabezado
 \fancyhead{}
 %Configuración de encabezados
 \fancyhead[CE,CO]{\textsc{\theshorttitle}} % CE Centered even
-%\fancyhead[CO]{\textsc{\leftmark}} % Centered odd
+\fancyhead[CO]{\textsc{\leftmark}} % Centered odd
 \fancyhead[RO,LE]{\thepage} % Rigth odd, left even
 \renewcommand{\headrulewidth}{0.4pt}
 }
