@@ -1,32 +1,68 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesPackage{ucvpsitesis}[2016/06/30 Formato de tesis de pregrado en Psicología]
 % 2017/07/19 Agregadas opciones para manejar apendices y una pagina de indicación de apendices
+% 2018/04/26 Reformateo del código
 % Preferencia por utilizar la clase de documento Memoir
 
+% Definición del formato del papel y márgenes
 \usepackage[
 	twoside,
 	paper=letterpaper,
 %	outer=4cm,
 %	inner=5cm,
 %	vmargin=2.54cm
-	]{geometry} %Definición del formato del papel y márgenes
-\usepackage{fontspec} %utilidad de fuentes y Unicode para \xetex\
-\defaultfontfeatures{Ligatures=Common,Numbers=OldStyle} %Opción para activar ligaturas \Tex\
-\setmainfont{Palatino Linotype} %Seleccionar fuentes
-\usepackage{graphicx} %Utilidad para imágenes
+	]{geometry}
+
+% Utilidad de fuentes y Unicode para \xelatex\
+\usepackage{fontspec}
+% Opción para activar ligaturas \Tex\
+\defaultfontfeatures{Ligatures=Common,Numbers=OldStyle}
+% Seleccionar fuente
+\setmainfont{Palatino Linotype}
+% Utilidad para importar y manipular imágenes
+\usepackage{graphicx}
+
+% Activar soporte multilenguage y selección de idioma
 \usepackage{polyglossia}
-\setdefaultlanguage{spanish} %Selección del idioma
-\usepackage{csquotes} %Soporte de símbolos para referencias bibliográficas
-\usepackage{titling} %Permite utilizar thetitle y theauthor
-\usepackage[tiny]{titlesec} %Permite personalizar los titulares de cada sección
-%Definiones de los formatos de los titulares en formate APAUCV
+\setdefaultlanguage{spanish}
+
+%%%
+% Opciones para bibliografía
+% Soporte de símbolos para referencias bibliográficas
+\usepackage{csquotes}
+% Paquete de referencias en formato APA
+\usepackage[
+    style=apa,
+    sortcites=true,
+    sorting=nyt,
+    date=year
+    ]{biblatex}
+%Mapeo del idioma español
+\DeclareLanguageMapping{spanish}{spanish-apa}
+%%%
+
+%%%
+% Títulos
+% Permite utilizar \thetitle y \theauthor como variables
+\usepackage{titling}
+% Permite personalizar los titulares de cada sección y hacer los títulos de
+%secciones del mismo tamaño que el resto del texto
+\usepackage[tiny]{titlesec}
+% Definiones de los formatos de los titulares en formato APAUCV
+% Capítulos: Centrados, Negrita, Grandes (IV.  Título)
 \titleformat{\chapter}[hang]{\centering \bfseries \large}{\Roman{chapter}.}{2em}{}[]
+% Subsección: Negrita, izquierda ( 4.1. Subsección)
 \titleformat{\subsection}[hang]{\bfseries}{\hspace*{1.2em} \thesubsection.}{2em}{}[]
+% Subsubsección: Negrita, itálica (     4.1.2.  Subsubsección)
 \titleformat{\subsubsection}[hang]{\bfseries\itshape}{\hspace*{5em} \thesubsubsection.}{2em}{}{}
+% Título.  espacio
 \titlelabel{\thetitle.\quad}
+% Reescribir las numeraciones de los títulos
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+%%%
+
 %%%%%%%%% Estoy sustituyendo esto con las opciones del paquete memoir
 %\usepackage{tocloft} %Permite personalizar la tabla de contenidos
 %\renewcommand{\cftchapaftersnum}{.}
@@ -36,16 +72,14 @@
 %\renewcommand{\cfttoctitlefont}{\addcontentsline{toc}{chapter}{Índice general}\normalfont\large\bfseries\hfill} %Incluir Índice en el Índice
 %\renewcommand{\cftaftertoctitle}{\hfill}
 %%%%%%%%%
-\usepackage[
-	style=apa,
-	sortcites=true,
-	sorting=nyt,
-	date=year
-	]{biblatex} %Utilidad de para manejar referencias en formato APA automáticamente 
-\DeclareLanguageMapping{spanish}{spanish-apa} %Mapeo del idioma
 
-\usepackage{fancyhdr} %Paquete para personalizar encabezados
-\def\shorttitle#1{\def\@shorttitle{#1}} %Define el uso de un título corto para los encabezados
+%%%
+% Encabezados
+% Paquete para personalizar encabezados
+\usepackage{fancyhdr}
+% Define el uso de un título corto para los encabezados
+\def\shorttitle#1{\def\@shorttitle{#1}}
+% The new command \theshorttitle returns the variable \@shorttitle
 \newcommand{\theshorttitle}{\@shorttitle}
 \fancypagestyle{ucvstyle}{
 \fancyhf{} %Limpia el formato de encabezado
