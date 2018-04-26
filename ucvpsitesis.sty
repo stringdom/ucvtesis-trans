@@ -71,7 +71,7 @@
 % Título.  espacio
 \titlelabel{\thetitle.\quad}
 % Reescribir las numeraciones de los títulos
-\renewcommand{\thechapter}{\Roman{chapter}}
+%\renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
 %%%
@@ -90,22 +90,24 @@
 % Encabezados
 % Paquete para personalizar encabezados
 \usepackage{fancyhdr}
+% Inicializar características de fancyhdr
+\pagestyle{fancy}
+% Redefine la marca de capítulo en el encabezado como un número romano
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \roman{\thechapter}.\
+%#1}{\sectionname\ \thesection}}
 % Crea un estilo de página
 \fancypagestyle{ucvstyle}{
-\fancyhf{} %Limpia el formato de encabezado
+%Limpia el formato de encabezado
+\fancyhead{}
 %Configuración de encabezados
-\fancyhead[CE]{\scshape\theshorttitle} % CE Centered even
-\fancyhead[CO]{\scshape\leftmark} % Centered odd
+\fancyhead[CE,CO]{\textsc{\theshorttitle}} % CE Centered even
+%\fancyhead[CO]{\textsc{\leftmark}} % Centered odd
 \fancyhead[RO,LE]{\thepage} % Rigth odd, left even
 \renewcommand{\headrulewidth}{0.4pt}
 }
-
-%Redefine la marca de capítulo en el encabezado asegurandose que siempre se
-%presenta como un número romano
-\renewcommand{\chaptermark}[1]{\markboth{\Roman{chapter}.\ #1}{}}
 %Redefine el estilo 'plain' para las primeras páginas de los capítulos
 \fancypagestyle{plain}{
-\fancyhf{}
+\fancyhead{}
 \fancyhead[RO,LE]{\thepage}
 \fancyhead[C]{\scshape\theshorttitle}
 \renewcommand{\headrulewidth}{0.4pt}
