@@ -54,6 +54,9 @@
 	font=it
 }
 
+% Cambiar impresión del título del índice
+\renewcommand{\printtoctitle}[1]{\centering\scshape\large\bfseries #1}
+
 %%%
 % Títulos
 % Permite utilizar \thetitle y \theauthor como variables
@@ -282,10 +285,10 @@ hidelinks=true
 	\pagestyle{ucvstyle}
 %	\pagenumbering{arabic}
 
-% Usar nombres correctos en español de el apéndice
+% Usar nombres correctos en español de el apéndice e índice
 \renewcommand{\appendixname}{Apéndice}
 \renewcommand{\appendixpagename}{Apéndices}
+\renewcommand{\contentsname}{Índice}
 }
-
 \OnehalfSpacing
 \endinput
