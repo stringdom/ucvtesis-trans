@@ -51,11 +51,13 @@
 	labelsep=newline,
 	justification=raggedright,
 	singlelinecheck=false,
-	font=it
+	textfont=it,
+	name=Tabla
 }
 
 % Cambiar impresión del título del índice
 \renewcommand{\printtoctitle}[1]{\centering\scshape\large\bfseries #1}
+\renewcommand{\printlottitle}[1]{\centering\scshape\large\bfseries #1}
 
 %%%
 % Títulos
@@ -286,9 +288,11 @@ hidelinks=true
 %	\pagenumbering{arabic}
 
 % Usar nombres correctos en español de el apéndice e índice
+\renewcommand{\contentsname}{Índice}
+\renewcommand{\listtablename}{Índice de tablas}
+\renewcommand{\appendixtocname}{Apéndices}
 \renewcommand{\appendixname}{Apéndice}
 \renewcommand{\appendixpagename}{Apéndices}
-\renewcommand{\contentsname}{Índice}
 }
 \OnehalfSpacing
 \endinput
