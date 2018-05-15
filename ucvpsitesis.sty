@@ -18,7 +18,7 @@
 % Opción para activar ligaturas \Tex\
 \defaultfontfeatures{Ligatures=Common,Numbers=OldStyle}
 % Seleccionar fuente
-\setmainfont{Palatino Linotype}
+% \setmainfont{Palatino Linotype}
 % Utilidad para importar y manipular imágenes
 \usepackage{graphicx}
 
@@ -187,7 +187,7 @@ hidelinks=true
 %		\begin{quotation}
 %		\elresumen
 %		\end{quotation}
-%		
+%
 %		\begin{description}
 %			\item[\itshape Palabras clave:] \laspalabras
 %		\end{description}
@@ -221,7 +221,7 @@ hidelinks=true
 %		\begin{quotation}
 %			\elabstract
 %		\end{quotation}
-%		
+%
 %		\begin{description}
 %			\item[\itshape Keywords:] \thekeywords.
 %		\end{description}
@@ -288,11 +288,12 @@ hidelinks=true
 %	\pagenumbering{arabic}
 
 % Usar nombres correctos en español de el apéndice e índice
-\renewcommand{\contentsname}{Índice}
+\renewcommand{\contentsname}{Índice de contenido}
 \renewcommand{\listtablename}{Índice de tablas}
 \renewcommand{\appendixtocname}{Apéndices}
 \renewcommand{\appendixname}{Apéndice}
 \renewcommand{\appendixpagename}{Apéndices}
 }
 \OnehalfSpacing
+\maxtocdepth{subsection}
 \endinput
