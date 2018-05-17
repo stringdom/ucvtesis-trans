@@ -46,7 +46,7 @@
 % Configuración de captions
 \captionsetup[table]{
 	format=plain,
-	indention=2em,
+	indention=0em,
 	labelformat=simple,
 	labelsep=newline,
 	justification=raggedright,
@@ -55,6 +55,17 @@
 	name=Tabla
 }
 
+% Configuración de figuras
+\captionsetup[figure]{
+	format=plain,
+	indention=0em,
+	labelformat=simple,
+	labelsep=period,
+	justification=centering,
+	singlelinecheck=false,
+	labelfont=it,
+	name=Figura
+}
 % Cambiar impresión del título del índice
 \renewcommand{\printtoctitle}[1]{\centering\scshape\large\bfseries #1}
 \renewcommand{\printlottitle}[1]{\centering\scshape\large\bfseries #1}
@@ -271,7 +282,7 @@ hidelinks=true
 		\vspace{2cm plus 1fill}
 		{\bfseries \scshape \Large
 		\thetitle \par
-		\normalfont \normalsize (Trabajo de investigación presentado ante la Escuela de Psicología de la Universidad Central de Venezuela, como requisito parcial para optar al título de Licenciado(a) en Psicología.)\par
+		\normalfont \normalsize (Trabajo de licenciatura presentado ante la Escuela de Psicología de la Universidad Central de Venezuela, como requisito parcial para optar al título de Licenciado(a) en Psicología.)\par
 		}
 		\vspace{2cm plus 1fill}
 		\begin{tabular}{ccc}
