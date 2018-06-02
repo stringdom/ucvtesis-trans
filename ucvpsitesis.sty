@@ -18,7 +18,7 @@
 % Opción para activar ligaturas \Tex\
 \defaultfontfeatures{Ligatures=Common,Numbers=OldStyle}
 % Seleccionar fuente
-% \setmainfont{Palatino Linotype}
+\setmainfont{Palatino Linotype}
 % Utilidad para importar y manipular imágenes
 \usepackage{graphicx}
 
@@ -108,7 +108,9 @@
 % Encabezados
 % Reiniciar footruleskip de la clase Memoir
 \let\footruleskip\undefined
-% Paquete para personalizar encabezados
+% Paquete para personalizar encabezados NOTE La clase Memoir expone varias de
+% estas cosas, pero utilicé este paquete debido a que originalmente la clase a
+% usar sería book.
 \usepackage{fancyhdr}
 % Inicializar características de fancyhdr
 \pagestyle{fancy}
@@ -119,6 +121,8 @@
 \fancypagestyle{ucvstyle}{
 %Limpia el formato de encabezado
 \fancyhead{}
+% Limpia el formato del pie de página
+\fancyfoot{}
 %Configuración de encabezados
 \fancyhead[CE,CO]{\textsc{\theshorttitle}} % CE Centered even
 \fancyhead[CO]{\textsc{\leftmark}} % Centered odd
@@ -128,6 +132,7 @@
 %Redefine el estilo 'plain' para las primeras páginas de los capítulos
 \fancypagestyle{plain}{
 \fancyhead{}
+\fancyfoot{}
 \fancyhead[RO,LE]{\thepage}
 \fancyhead[C]{\scshape\theshorttitle}
 \renewcommand{\headrulewidth}{0.4pt}
