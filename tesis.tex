@@ -13,32 +13,24 @@
 \shorttitle{Identidad de género y transición}
 \engtitle{Gender identity and transition on trans people from Caracas}
 
-%\includeonly{frontmatter, intro, objetivos, metodologia, guion, consentimiento}
-
 \begin{document}
     \maketitle
     \nocite{*}
     \frontmatter
     \include{frontmatter}
-    \tableofcontents
-    \cleardoublepage\
-    \listoftables*
+    \cleardoublepage\tableofcontents
+    \clearpage\listoftables*
     \listoffigures*
-    \mainmatter\
-    \include{intro} % TODO referencias a capítulos cambiarán
-%    \include{problema} % TODO Pendiente
+    \mainmatter\include{intro} % TODO referencias a capítulos cambiarán
+    \include{problema} % TODO Pendiente
     \include{objetivos} % Fijados, objetivos definitivos
-%    \include{justificacion} % TODO falta arreglar cosas
+    \include{justificacion} % TODO falta arreglar cosas
     \include{marco}
     \include{metodologia}
     \include{discusion}
     \include{conclusion}
     \printbibliography\
-    \appendix
-    \appendixpage\
-    \titleformat{\chapter}[hang]{\centering \bfseries}{\thechapter}{2em}{}[] % Reestablecer la numeración de los capítulos para los anexos
+    \appendix\appendixpage\titleformat{\chapter}[hang]{\centering \bfseries}{\thechapter}{2em}{}[] % Reestablecer la numeración de los capítulos para los anexos
     \include{guion} % Versión final a utilizar para entrevistas
     \include{consentimiento} % Se queda
-%    \backmatter
-%  \listoftodos
 \end{document}
