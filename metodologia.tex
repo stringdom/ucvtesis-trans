@@ -369,17 +369,23 @@ participantes y la numeración asignadas para identificarles en el capítulo
 correspondiente al análisis y discusión de los resultados.
 
 \begin{table}[]
+  \centering
+  \begin{threeparttable}
     \caption{Descripción de los participantes}\label{tab:participantes}
-    \centering
     \renewcommand{\tabcolsep}{1pt}
-    \begin{tabularx}{\textwidth}{@{}ccXcXX@{}}
+    \begin{tabularx}{0.8\textwidth}{@{}cccccc@{}}
     \toprule
-    Id & Sexo & Género         & Edad & Denominación & Ocupación
+    Caso & Sexo & Género\tnote{1}       & Edad & Denominación & Ocupación
     \\ \midrule
-    1            & Masculino      & Hombre a Mujer & 45   & Transgénero      & Abogada            \\
-    2            & Femenino       & Mujer a hombre & 32   & Transgénero      & Lic.\ en Psicología \\
-    3            & Femenino       & Mujer a hombre & 24   & Transgénero      & TSU Informático    \\ \bottomrule
+    1            & Masculino      & HaM & 45   & Transgénero      & Abogada            \\
+    2            & Femenino       & MaH & 32   & Transgénero      & Lic.\ en Psicología \\
+    3            & Femenino       & MaH & 24   & Transgénero      & TSU Informático    \\ \bottomrule
     \end{tabularx}
+    \begin{tablenotes}
+      \footnotesize
+    \item[1] HaM = Hombre a mujer, Mujer trans.\\MaH = Mujer a hombre, Hombre trans.
+    \end{tablenotes}
+  \end{threeparttable}
 \end{table}
 
 \section{Estrategia de construcción de la información}
@@ -438,7 +444,7 @@ En general, las entrevistas duraron entre una (1) y dos (2) horas cada una.
 \begin{table}[]
 \centering
 \caption{Estructura del protocolo de entrevista semiestructurada}\label{tab:protocolo}
-\begin{tabularx}{\textwidth}{@{}rX@{}}
+\begin{tabularx}{0.7\textwidth}{@{}rl@{}}
 \toprule
 Eje temático                & Tema                                        \\ \midrule
 \multirow{7}{*}{Identidad}  & Identidad de género                         \\
@@ -552,7 +558,7 @@ categorías.
 \begin{table}[h]
 \centering
 \caption{Categorías y sub-categorías}\label{tab:categorias}
-\begin{tabularx}{\textwidth}{@{}XX@{}}
+\begin{tabularx}{0.7\textwidth}{@{}XX@{}}
 \toprule
 Categorías                           & Sub-categorías      \\ \midrule
 \multirow{2}{*}{Desarrollo}          & Infancia y Pubertad \\
