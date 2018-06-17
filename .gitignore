@@ -1,3 +1,5 @@
+resumen.tex
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -10,6 +12,7 @@
 *.fot
 *.cb
 *.cb2
+*.tuc
 
 ## Intermediate documents:
 *.dvi
